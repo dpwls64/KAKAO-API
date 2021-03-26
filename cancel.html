@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>kakaopay</title>
+    <style>
+    </style>
+    <script src="./js/jquery-3.5.1.js"></script>
+    <script>
+
+    </script>
+</head>
+<style>
+	#box{
+		border : 2px solid #F7E524;
+		margin: 15px;
+		width: 300px;
+		height: auto;
+		padding: 15px;
+	}
+	#txt{
+		background-color: #F7E524;
+	}
+
+</style>
+<body>
+<div class="row mt-5">
+    <div class="mt-5 pt-5 row justify-content-center" id = box>
+        <h2 class="text-center my-5 col-12" id= txt>결제가 중단 되었습니다!</h2>
+        <div class="col-4 p-5 bg-light">
+            <h3 class="text-center my-5">주문자 정보</h3>
+            <div>
+            	<div class="my-3 row">
+                    <div class="h5 col-6">결제상태 : 중단</div>
+                </div>
+                <div class="my-3 row">
+                    <div class="h5 col-6">주문번호 : {{ res.partner_order_id }}</div>
+                </div>
+                <div class="my-3 row">
+                    <div class="h5 col-6">가맹점 회원 ID : {{ res.partner_user_id }}</div>
+                </div>
+                <div class="my-3 row">
+                    <div class="h5 col-6">상품명 : {{ res.item_name }}</div>
+                </div>
+                <div class="my-3 row">
+                    <div class="h5 col-6">수량 : {{ res.quantity }}</div>
+                </div>
+                
+                
+                <div class="my-3 row">
+                    <div class="h5 col-6">취소 금액 : {{ context.cancel_available_amount }}원</div>
+                </div>
+                <div class="my-3 row">
+                    <div class="h5 col-6">취소 시간 : {{ res.created_at }}</div>
+                </div>
+                <div class="my-3 row">
+                    <div class="h5 col-6">결제수단 : 카카오페이머니</div>
+                </div>
+                <br>
+                <div class="my-3 row">
+                    <div class="h5 col-6">* 현금 영수증 발행 여부는 가맹정을 통해 확인해 주세요</div>
+                </div>
+            </div>
+            <div class="mt-5 pt-3 text-center">
+                <a href="http://127.0.0.1:5000/kakaopay" class="btn btn-warning">메인으로 돌아가기</a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

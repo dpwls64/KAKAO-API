@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>kakaopay</title>
+    <style>
+    </style>
+    <script src="./js/jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#pay').on('click', function () {
+                let param = "dummy=" + Math.random();
+                $.ajax({
+                    url: "/kakaopay/paymethod.ajax",
+                    data: param,
+                    dataType: "json",
+                    type: "post",
+                    async: false,
+                    statusCode: {
+                        404: function () {
+                            alert("네트워크가 불안정합니다. 다시 시도부탁드립니다.");
+                        }
+                    },
+                    success: function (data) {
+                        location.href=data["next_url"]
+                    }
+                });
+            });
+        })
+        
+        
+        $(document).ready(function () {
+            $('#cancel').on('click', function () {
+                let param = "dummy=" + Math.random();
+                $.ajax({
+                    url: "/kakaopay/cancel",
+                    data: param,
+                    dataType: "json",
+                    type: "post",
+                    async: false,
+                    statusCode: {
+                        404: function () {
+                            alert("네트워크가 불안정합니다. 다시 시도부탁드립니다.");
+                        }
+                    },
+                    success: function (data) {
+                        location.href=data["next_url"]
+                    }
+                });
+            });
+        })
+    </script>
+</head>
+<body>
+<div class="row mt-5">
+    <h1 class="col-12 text-center my-5">KAKAO PAY</h1>
+    <form method="post" class="col-12 text-center">
+        <input type="button" class="btn btn-warning" id="pay" value="카카오페이로 결제하기">
+    </form>
+</div>
+</body>
+</html>
